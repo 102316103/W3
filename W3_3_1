@@ -1,0 +1,95 @@
+import java.io.*;
+import java.util.*;
+
+public class W3_3_1 {
+
+	public static void main(String[] args)throws IOException {
+		String a;
+		String[] str;
+		int b,i,opt;
+		HashMap map=new HashMap<String, Integer>();
+		Scanner s = new Scanner(System.in);
+		File fr;
+		FileWriter fw;
+		ArrayList tmpxList = new ArrayList(); 
+		ArrayList tmpyList = new ArrayList();
+		Scanner t;
+		do
+		{
+			System.out.print("(1)輸入(2)查詢(3)印出(4)讀檔(5)寫檔(-1)end :");
+			opt = s.nextInt();
+			if(opt==1)
+			{
+				System.out.print("文章:");
+				a = s.nextLine();
+				a = s.nextLine();
+				/*System.out.print("成績:");
+				b = s.nextInt();*/
+				//=======================
+				
+				str = a.split(",| ");
+				for (String n:str)
+				{
+					if( map.get(n) == null )
+					{
+						map.put(n.toLowerCase(),1);   
+					}
+					else
+					{
+						a =  map.get(n).toString();
+						b = Integer.parseInt(a);
+						map.put(n.toLowerCase(),b+1);   
+					}
+				}				  
+			}
+			else if(opt==2)
+			{
+				System.out.print("輸入字串:");
+				a = s.next();
+				System.out.println(a + "\t: " + map.get(a));
+			}
+			else if(opt==3)
+			{
+				for (Object name:map.keySet()) {
+					System.out.println(name + "\t: " + map.get(name));
+		        }
+		        System.out.println();
+			}
+			else if(opt==4)
+			{
+				map=new HashMap<String, Integer>();
+				fr= new File("C:/Users/lin/Desktop/1.txt");
+				t = new Scanner(fr);
+				while(t.hasNext())
+				{	
+					a = t.nextLine();
+					String tempArray[]  = a.split(" ");
+					for (i=0;i<2;i++){
+						if( map.get(tempArray[i]) == null )
+						{
+							map.put(tempArray[i].toLowerCase(),1);   
+						}
+						else
+						{
+							a =  map.get(tempArray[i]).toString();
+							b = Integer.parseInt(a);
+							map.put(tempArray[i].toLowerCase(),b+1);   
+						}
+					}
+				}
+				
+			}
+			else if(opt==5)
+			{
+				fw= new FileWriter("C:/Users/lin/Desktop/1.txt");
+				for (Object name:map.keySet()) {
+					fw.write(name+" "+map.get(name)+"\n");
+		        }
+				fw.flush();
+				fw.close();
+			}
+			
+		}while(opt != -1);
+	}
+
+}
