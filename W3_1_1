@@ -1,0 +1,35 @@
+import java.util.*;
+public class W3_1_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String str;
+		String[] A ;
+		int count=0;
+		
+		System.out.print("請輸入字串:");
+		Scanner op = new Scanner(System.in);
+		str = op.nextLine();
+		A= str.split(",| ");
+		for (String s:A)
+		{
+			if (check(s)==1)
+			{	
+				count += Integer.parseInt(s);
+			}	
+			else
+				System.out.println(s.toLowerCase());
+		}
+		System.out.println("數字累計:"+count);
+		
+		//opt = op.nextInt();
+	}
+	public static int check(String a)
+	{
+		if(a.matches("[0-9]+"))
+			return 1;
+		else
+			return 0;
+	}
+
+}
