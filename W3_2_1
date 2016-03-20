@@ -1,0 +1,39 @@
+import java.util.*;
+
+public class W3_2_1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String a;
+		int b,i,opt;
+		HashMap map=new HashMap<String, Integer>();
+		Scanner s = new Scanner(System.in);
+		do
+		{
+			System.out.print("(1)輸入(2)查詢(3)印出(4)讀黨(5)寫檔(-1)end");
+			opt = s.nextInt();
+			if(opt==1)
+			{
+				System.out.print("文章:");
+				a = s.next();
+				map.put(a,b);   
+			}
+			else if(opt==2)
+			{
+				System.out.print("單字:");
+				a = s.next();
+				System.out.println(a + " : " + map.get(a));
+			}
+			else if(opt==3)
+			{
+				for (Object name:map.keySet()) {
+					System.out.println(name + " : " + map.get(name));
+		        }
+		        System.out.println();
+			}
+		}while(opt != -1);
+		
+		
+	}
+
+}
